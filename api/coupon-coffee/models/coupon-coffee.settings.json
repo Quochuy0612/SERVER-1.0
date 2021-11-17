@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupon_coffees",
+  "info": {
+    "name": "Coupon_coffee"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "code": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "expiration_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "applicable_type": {
+      "type": "enumeration",
+      "enum": [
+        "A_new_customer",
+        "Shop_birthday",
+        "Minimum_order_value",
+        "Minimum_number_of_drinks"
+      ],
+      "required": true
+    },
+    "discount_rate": {
+      "type": "string",
+      "required": true
+    },
+    "promotional_images": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "minimum_condition": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
